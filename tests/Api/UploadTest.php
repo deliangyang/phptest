@@ -9,7 +9,7 @@ use Test\Helper\YdlRequest;
 class UploadTest extends YdlRequest
 {
 
-    protected $prefixUrl = 'http://www.ydl.com:9090';
+    protected $prefixUrl = 'http://new-dev-ck.haochang.tv';
 
     protected $method = 'POST';
 
@@ -24,19 +24,20 @@ class UploadTest extends YdlRequest
             'taskId' => 'xxxxx',
             'songName' => 'asdfasdfasdf',
             'createTime' => time(),
-            'filesInfo' => \GuzzleHttp\json_encode([
-                'song' => [
-                    'fileName' => 'file.txt',
-                    'md5' => md5('file.txt'),
-                    'duration' => 1199,
-                    'size' => 110,
-                ],
-            ]),
+            'fileName' => 'file.txt',
+            'md5' => md5('file.txt'),
+            'duration' => 1199,
+            'size' => 110,
+            'humanVolume' => 12,
+            'beatVolume' => 34,
+            'monitorId' => 234,
+            'headset' => 234234,
+            'microphoneId' => 234234,
 
         ];
         $this->request('/api/upload/song', function (Response $response) {
             $content = \GuzzleHttp\json_decode($response->getBody()->getContents(), true);
-            $this->assertArrayHasKey('token', $content['data']['filesInfo']['song']);
+            $this->assertArrayHasKey('token', $content['data']);
         });
     }
 
