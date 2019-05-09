@@ -9,7 +9,7 @@ use Test\Helper\YdlRequest;
 class UploadTest extends YdlRequest
 {
 
-    protected $prefixUrl = 'http://new-dev-ck.haochang.tv';
+    protected $prefixUrl = 'http://xxx-xxx-ck.xxxx.tv';
 
     protected $method = 'POST';
 
